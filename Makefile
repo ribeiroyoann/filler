@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+         #
+#    By: yoann <yoann@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/17 15:48:36 by yoribeir          #+#    #+#              #
-#    Updated: 2019/01/17 15:49:28 by yoribeir         ###   ########.fr        #
+#    Updated: 2019/01/18 16:16:38 by yoann            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME = yoribeir.filler
 INCLUDES = includes
 LIBS = libft
 LIB = ft
-FLAGS = -Wall -Werror -Wextra
-SRCS = main.c
+# FLAGS = -Wall -Werror -Wextra
+SRCS = main.c parser.c utils.c
 SRCSREP = srcs
 OBJS = $(SRCS:.c=.o)
 
@@ -34,4 +34,9 @@ clean:
 fclean: clean
 	make fclean -C libft
 	rm -f $(NAME)
+
+test: all
+	cp -f yoribeir.filler res/players
+	./res/filler_vm -f ./res/maps/map03 -p1 ./res/players/abarriel.filler -p2 ./res/players/yoribeir.filler 2>out
+
 re: fclean all
