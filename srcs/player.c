@@ -1,46 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/18 16:15:27 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/18 20:25:29 by yoann            ###   ########.fr       */
+/*   Created: 2019/01/18 19:53:09 by yoann             #+#    #+#             */
+/*   Updated: 2019/01/18 20:28:11 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void	print_board(t_parser *p)
+int		get_position(t_parser *p)
 {
 	int		y;
+	int		x;
 
 	y = 0;
 	while (y < p->height)
 	{
-		dprintf(2, "%s\n", p->board[y]);
+		x = 0;
+		while (x < p->width)
+		{
+			if (p->board[y][x] == p->player)
+				return (y * p->width + x);
+			x++;
+		}
 		y++;
 	}
+	return (-1);
 }
 
-void	print_piece(t_parser *p)
-{
-	int		y;
+// int		resize_piece(t_parser *p)
+// {
 
-	y = 0;
-	while (y < p->piece_h)
-	{
-		dprintf(2, "%s\n", p->piece[y]);
-		y++;
-	}
-}
+	
+// }
+// int		place_piece(t_parser *p)
+// {
+// 	int		y;
+// 	int		x;
 
-void	print_parsing(t_parser *p)
-{
-	dprintf(2, "Player %c - Enemy %c\n", p->player, p->enemy);
-	dprintf(2, "Plateau %d %d\n", p->height, p->width);
-	print_board(p);
-	dprintf(2, "Piece %d %d\n", p->piece_h, p->piece_w);
-	print_piece(p);
-}
+
+// }

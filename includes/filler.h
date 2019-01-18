@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 15:56:11 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/01/18 16:19:56 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/18 20:24:27 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 
 typedef	struct s_parser
 {
-	int			player;
+	char		player;
+	char		enemy;
 	int			height;
 	int			width;
 	int			piece_h;
@@ -34,6 +35,13 @@ int		get_player(t_parser *p);
 int		get_board(t_parser *p);
 void	get_piece(t_parser *p);
 int		parser(t_parser *p);
+
+
+/*
+** PLAYER
+*/
+
+int		get_position(t_parser *p);
 
 /*
 ** UTILS
