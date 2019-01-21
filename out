@@ -5,6 +5,7 @@ Plateau 5 7
 .......
 ....O..
 .......
-Piece 1 2
-**
+Piece 1 5
+...**
 POS = 9
+shiftH 0 shiftW 3

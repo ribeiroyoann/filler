@@ -6,7 +6,7 @@
 #    By: yoann <yoann@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/17 15:48:36 by yoribeir          #+#    #+#              #
-#    Updated: 2019/01/18 19:53:17 by yoann            ###   ########.fr        #
+#    Updated: 2019/01/21 20:21:06 by yoann            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ INCLUDES = includes
 LIBS = libft
 LIB = ft
 # FLAGS = -Wall -Werror -Wextra
-SRCS = main.c parser.c utils.c player.c
+SRCS = main.c parser.c utils.c player.c piece.c
 SRCSREP = srcs
 OBJS = $(SRCS:.c=.o)
 

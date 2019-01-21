@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 13:53:48 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/18 20:32:26 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/21 20:08:28 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,6 @@ void	get_piece(t_parser *p)
 	}
 }
 
-void	align_piece(t_parser *p)
-{
-
-}
-
 int		parser(t_parser *p)
 {
 	get_player(p);
@@ -83,6 +78,7 @@ int		parser(t_parser *p)
 	get_piece(p);
 	print_parsing(p);
 	dprintf(2, "POS = %d\n", get_position(p));
+	dprintf(2, "shiftH %d shiftW %d\n", trim_height(p), trim_width(p));
 	printf("1 2\n");
 	return (1);
 }
