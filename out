@@ -1,11 +1,136 @@
-Player X - Enemy O
-Plateau 5 7
+*
+*
+0 0
+0 1
+0 2
+0 3
+0 4
+0 5
+0 6
+1 0
+1 1
+1 2
+1 3
+1 4
+1 5
+1 6
+2 0
+2 1
+2 2
+2 3
+2 4
+CONTACT
+PLACE 2 4
+2 5
+2 6
+3 0
+3 1
+3 2
+3 3
+3 4
+CONTACT
+PLACE 3 4
+3 5
+3 6
+4 0
 .......
 ..X....
 .......
 ....O..
 .......
-Piece 1 5
-...**
-POS = 9
-shiftH 0 shiftW 3
+my pos: 3 4
+.......
+..XX...
+.......
+....O..
+.......
+.......
+..XX...
+...X...
+....O..
+.......
+.......
+..XX...
+..XX...
+....O..
+.......
+...X...
+..XX...
+..XX...
+....O..
+.......
+...X...
+..XX...
+..XX...
+..X.O..
+.......
+...XX..
+..XXX..
+..XX...
+..X.O..
+.......
+...XX..
+..XXX..
+..XX...
+.XX.O..
+.......
+...XXX.
+..XXX..
+..XX...
+.XX.O..
+.......
+...XXX.
+..XXXX.
+..XX.X.
+.XX.OX.
+.......
+.XXXXX.
+..XXXX.
+..XX.X.
+.XX.OX.
+.......
+.XXXXX.
+..XXXX.
+..XX.X.
+.XX.OXX
+.......
+.XXXXX.
+.XXXXX.
+..XX.X.
+.XX.OXX
+.......
+.XXXXX.
+.XXXXX.
+..XX.X.
+.XX.OXX
+......X
+XXXXXX.
+.XXXXX.
+..XX.X.
+.XX.OXX
+......X
+XXXXXX.
+.XXXXX.
+..XX.X.
+.XX.OXX
+....XXX
+XXXXXXX
+.XXXXXX
+..XX.X.
+.XX.OXX
+....XXX
+XXXXXXX
+.XXXXXX
+..XX.X.
+.XX.OXX
+.X..XXX
+XXXXXXX
+.XXXXXX
+XXXX.X.
+.XX.OXX
+.X..XXX
+XXXXXXX
+.XXXXXX
+XXXX.X.
+.XXXOXX
+.X.XXXX

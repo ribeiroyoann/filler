@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/* *******************************************************************p******* */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 16:15:27 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/18 20:25:29 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/22 13:30:29 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ void	print_board(t_parser *p)
 	}
 }
 
-void	print_piece(t_parser *p)
+void	print_piece(t_parser *p, char **piece)
 {
 	int		y;
 
 	y = 0;
-	while (y < p->piece_h)
+	while (y < p->trim_h)
 	{
-		dprintf(2, "%s\n", p->piece[y]);
+		dprintf(2, "%s\n", piece[y]);
 		y++;
 	}
 }
@@ -42,5 +42,5 @@ void	print_parsing(t_parser *p)
 	dprintf(2, "Plateau %d %d\n", p->height, p->width);
 	print_board(p);
 	dprintf(2, "Piece %d %d\n", p->piece_h, p->piece_w);
-	print_piece(p);
+	print_piece(p, p->piece);
 }
