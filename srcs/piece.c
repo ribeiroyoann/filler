@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:39:25 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/22 14:26:11 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/23 14:11:43 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,23 @@ int		trim_width(t_parser *p, char **stockpiece)
 		}
 		shift++;
 		x++;
+	}
+	return (shift);
+}
+
+int		trim_height_end(t_parser *p, char **stockpiece)
+{
+	int		y;
+	int		shift;
+
+	y = p->piece_h;
+	shift = 0;
+	while (y > 0)
+	{
+		if (ft_strchr(stockpiece[y], '*'))
+			return (shift);
+		shift++;
+		y--;
 	}
 	return (shift);
 }

@@ -1,6 +1,4 @@
-seed = 1464
-O: error on input
-./res/players/yoribeir.filler: Segfault at 0
+seed = 1289
 ./res/players/lcharvol.filler won
 Score:
-0AGAINST19
+1AGAINST6
