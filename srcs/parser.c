@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 13:53:48 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/22 15:12:07 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/23 17:14:08 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,15 @@ int		get_board(t_parser *p)
 	char	*line;
 	int		y;
 
-	get_next_line(0, &line);
+	if (!(get_next_line(0, &line)))
+		return (0);
 	line += 8;
-	p->height = ft_atoi(line);
+	if (!p->height)
+		p->height = ft_atoi(line);
 	while (ft_isdigit(*line))
 		line++;
-	p->width = ft_atoi(line);
+	if (!p->width)
+		p->width = ft_atoi(line);
 	get_next_line(0, &line);
 	p->board = ft_memalloc(sizeof(char *) * p->height + 1);
 	y = 0;
@@ -45,6 +48,7 @@ int		get_board(t_parser *p)
 	{
 		get_next_line(0, &line);
 		p->board[y] = ft_strsub(line, 4, p->width);
+		dprintf(2, "gnl %s\n", p->board[y]);
 		y++;
 	}
 	return (0);
@@ -82,7 +86,8 @@ void	get_piece(t_parser *p)
 		stockpiece[y] = ft_strdup(line);
 		y++;
 	}
-	trim_piece(p, stockpiece);
 	print_ogpiece(p, stockpiece);
+	dprintf(2, "------------\n");
+	trim_piece(p, stockpiece);
 }
 

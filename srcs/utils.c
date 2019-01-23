@@ -35,12 +35,3 @@ void	print_piece(t_parser *p, char **piece)
 		y++;
 	}
 }
-
-void	print_parsing(t_parser *p)
-{
-	dprintf(2, "Player %c - Enemy %c\n", p->player, p->enemy);
-	dprintf(2, "Plateau %d %d\n", p->height, p->width);
-	print_board(p);
-	dprintf(2, "Piece %d %d\n", p->piece_h, p->piece_w);
-	print_piece(p, p->piece);
-}

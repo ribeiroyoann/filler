@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 15:56:11 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/01/22 14:13:49 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/23 16:16:32 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef	struct s_parser
 	int			piece_w;
 	int			trim_h;
 	int			trim_w;
+	int			psize_h;
+	int			psize_w;
 	char		**board;
 	char		**piece;
 }				t_parser;

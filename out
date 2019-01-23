@@ -1,78 +1,102 @@
-**.
-0 0
-0 1
-0 2
-0 3
-0 4
-0 5
-0 6
-1 0
-1 1
-1 2
-1 3
-1 4
-1 5
-1 6
-2 0
-2 1
-2 2
-2 3
-2 4
-2 5
-2 6
-3 0
-3 1
-3 2
-3 3
+gnl .......
+gnl ..X....
+gnl .......
+gnl ....O..
+gnl .......
+***
+------------
+[***]
+PIECE SIZE 1 3
 CONTACT
-PLACE 3 3
-3 4
-CONTACT
-PLACE 3 4
-3 5
-3 6
-4 0
-4 1
-4 2
-4 3
-4 4
-4 5
-4 6
-NO SOLVE
+PLACE 3 2
 .......
 ..X....
 .......
-...OO..
+....O..
 .......
-my pos: 3 3
 my pos: 3 4
 .......
-..XX...
+..XXX..
+.......
+....O..
+.......
+.......
+XXXXX..
+.......
+....O..
+.......
+.......
+XXXXX..
 ...X...
-...OO..
+...XO..
 .......
 .......
+XXXXX..
+...X...
+...XO..
+...X...
+.......
+XXXXXX.
+...X...
+...XO..
+...X...
+.......
+XXXXXX.
+X..X...
+...XO..
+...X...
+.......
+XXXXXX.
+X.XX...
+..XXO..
 ..XX...
-...XX..
-...OO..
 .......
+XXXXXXX
+X.XX...
+..XXO..
+..XX...
 .......
-.XXX...
-...XX..
-...OO..
+XXXXXXX
+X.XXXX.
+..XXOX.
+..XX...
 .......
+XXXXXXX
+X.XXXX.
+..XXOX.
+..XX.X.
 .......
-.XXX...
-...XXX.
-...OO..
+XXXXXXX
+XXXXXX.
+..XXOX.
+..XX.X.
 .......
+XXXXXXX
+XXXXXX.
+..XXOX.
+..XXXXX
 .......
-.XXXXX.
-...XXX.
-...OO..
+XXXXXXX
+XXXXXXX
+..XXOX.
+..XXXXX
 .......
+XXXXXXX
+XXXXXXX
+.XXXOX.
+..XXXXX
 .......
-.XXXXX.
-.XXXXX.
-.X.OO..
+XXXXXXX
+XXXXXXX
+.XXXOXX
+..XXXXX
 .......
+XXXXXXX
+XXXXXXX
+.XXXOXX
+XXXXXXX
+.......
+XXXXXXX
+XXXXXXX
+XXXXOXX
+XXXXXXX

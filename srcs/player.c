@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 19:53:09 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/22 16:01:49 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/23 17:23:04 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ int		place_piece(t_parser *p, int boardy, int boardx)
 
 	contact = 0;
 	y = 0;
-	while (y < p->trim_h)
+	if (boardy + p->psize_h > p->height || boardx + p->psize_w > p->width)
+		return (0);
+	while (y < p->psize_h)
 	{
 		x = 0;
-		while (x < p->trim_w)
+		while (x < p->psize_w)
 		{
-			if ((y + boardy > p->height) || (x + boardx > p->width))
-				break ;
 			if (p->piece[y][x] == '*' && p->board[y + boardy][x + boardx] == p->player)
 				contact++;
 			if (p->piece[y][x] == '*' && p->board[y + boardy][x + boardx] == p->enemy)
@@ -74,12 +74,15 @@ int		solve(t_parser *p)
 		x = 0;
 		while (x < p->width)
 		{
-			dprintf(2, "%d %d\n", y, x);
 			if (place_piece(p, y, x) == 1)
 			{
 				dprintf(2, "PLACE %d %d\n", y, x);
-				printf("%d %d\n", y, x);
-				// return (1);
+				ft_putnbr(3);
+				ft_putstr(" ");
+				ft_putnbr(4);
+				ft_putchar('\n');
+				// printf("%d %d\n", y, x);
+				return (1);
 			}
 			x++;
 		}
