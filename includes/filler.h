@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 15:56:11 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/01/24 15:13:03 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/24 19:44:43 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef	struct s_parser
 	int			pos_y;
 	int			pos_x;
 	char		**board;
+	int			**hmap;
 	char		**piece;
 }				t_parser;
 
@@ -58,6 +59,14 @@ int		solve(t_parser *p);
 */
 
 void	get_shape(t_parser *p);
+
+
+/*
+** HEATMAP
+*/
+
+void	create_inithmap(t_parser *p);
+void	print_hmap(t_parser *p);
 
 /*
 ** UTILS
