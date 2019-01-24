@@ -6,7 +6,7 @@
 #    By: yoann <yoann@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/17 15:48:36 by yoribeir          #+#    #+#              #
-#    Updated: 2019/01/24 11:55:51 by yoann            ###   ########.fr        #
+#    Updated: 2019/01/24 14:43:54 by yoann            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,6 @@ fclean: clean
 
 test: all
 	cp -f yoribeir.filler res/players
-	./res/filler_vm -f ./res/maps/map03 -p1 ./res/players/lcharvol.filler -p2 ./res/players/yoribeir.filler 2>out
+	./res/filler_vm -f ./res/maps/map01 -p1 ./res/players/lcharvol.filler -p2 ./res/players/yoribeir.filler 2>out -t 1
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:39:25 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/24 12:29:00 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/24 15:16:17 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,54 +92,39 @@ int		trim_width_end(t_parser *p, char **stockpiece)
 	return (shift);
 }
 
-char	*ft_strdup_until(char const *src, int until)
+void	get_shape(t_parser *p)
 {
-	char	*ret;
-	int		i;
-
-	ret = malloc(sizeof(char) * (until + 1));
-	if (!ret)
-		return (0);
-	i = 0;
-	while (src[i] && i <= until)
-	{
-		ret[i] = src[i];
-		i++;
-	}
-	ret[i] = '\0';
-	return (ret);
-}
-
-
-void	trim_piece(t_parser *p, char **stockpiece)
-{
-	int		shift_h;
-	int		shift_w;
-	int		shift_endw;
-	int		shift_endh;
 	int		y;
-	static int count = 0;
+	int		x;
 
-	dprintf(2, "TOUR %d\n", count);
-	count++;
-	shift_h = trim_height(p, stockpiece);
-	shift_w = trim_width(p, stockpiece);
-	shift_endw = trim_width_end(p, stockpiece);
-	if (shift_endw)
-		shift_endw += 1;
-	shift_endh = trim_height_end(p, stockpiece);
-	p->trim_h = p->piece_h - shift_h;
-	p->trim_w = p->piece_w - shift_w;
+	dprintf(2, "PIECE %d %d\n", p->piece_h, p->piece_w);
+	p->ey = 0;
+	p->ex = 0;
+	p->sy = p->piece_h;
+	p->sx = p->piece_w;
 	y = 0;
-	p->piece = ft_memalloc(sizeof(char *) * (p->piece_h - shift_endh - shift_h + 1));
-	while (y < p->piece_h - shift_endh - shift_h)
+	while (y < p->piece_h)
 	{
-		p->piece[y] = ft_strdup_until((stockpiece[shift_h + y] + shift_w), (p->piece_w - shift_endw - shift_w));
-		p->psize_w = ft_strlen(p->piece[y]);
-		// dprintf(2, "[%s]\n", p->piece[y]);
+		x = 0;
+		while (x < p->piece_w)
+		{
+			if (p->piece[y][x] == '*')
+			{
+				if (y > p->ey)
+					p->ey = y;
+				if (y < p->sy)
+					p->sy = y;
+				if (x > p->ex)
+					p->ex = x;
+				if (x < p->sx)
+					p->sx = x;
+			}
+			x++;
+		}
 		y++;
 	}
-	p->piece[y] = 0;
-	p->psize_h = y;
-	dprintf(2, "PIECE SIZE %d %d\n", p->psize_h, p->psize_w);
+	p->psizey = p->ey - p->sy + 1;
+	p->psizex = p->ex - p->sx + 1;
+	print_piece(p, p->piece);
+	dprintf(2, "PSIZE %d %d\n", p->psizey, p->psizex);
 }

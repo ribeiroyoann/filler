@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 13:53:48 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/24 12:14:21 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/24 14:38:05 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ int		get_board(t_parser *p)
 	while (ft_isdigit(*line))
 		line++;
 	p->width = ft_atoi(line);
-	if (!(get_next_line(0, &line)))
-		return (0);
+	get_next_line(0, &line);
 	p->board = ft_memalloc(sizeof(char *) * p->height + 1);
 	y = 0;
 	while (y < p->height)
@@ -52,22 +51,9 @@ int		get_board(t_parser *p)
 	return (0);
 }
 
-void	print_ogpiece(t_parser *p, char **piece)
-{
-	int		y;
-
-	y = 0;
-	while (y < p->piece_h)
-	{
-		dprintf(2, "%s\n", piece[y]);
-		y++;
-	}
-}
-
 void	get_piece(t_parser *p)
 {
 	char	*line;
-	char	**stockpiece;
 	int		y;
 
 	get_next_line(0, &line);
@@ -76,16 +62,13 @@ void	get_piece(t_parser *p)
 	while (ft_isdigit(*line))
 		line++;
 	p->piece_w = ft_atoi(line);
-	stockpiece = ft_memalloc(sizeof(char *) * p->piece_h + 1);
+	p->piece = ft_memalloc(sizeof(char *) * p->piece_h + 1);
 	y = 0;
 	while (y < p->piece_h)
 	{
 		get_next_line(0, &line);
-		stockpiece[y] = ft_strdup(line);
+		p->piece[y] = ft_strdup(line);
 		y++;
 	}
-	print_ogpiece(p, stockpiece);
-	dprintf(2, "------------\n");
-	trim_piece(p, stockpiece);
+	get_shape(p);
 }
-

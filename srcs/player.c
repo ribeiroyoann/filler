@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 19:53:09 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/24 12:32:32 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/24 14:53:47 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,14 @@ int		place_piece(t_parser *p, int boardy, int boardx)
 
 	contact = 0;
 	y = 0;
-	if (boardy + p->psize_h > p->height || boardx + p->psize_w > p->width)
+	if ((p->piece_h + boardy > p->height) || (p->piece_w + boardx > p->width))
 		return (0);
-	while (y < p->psize_h)
+	while (y < p->piece_h)
 	{
 		x = 0;
-		while (x < p->psize_w)
+		while (x < p->piece_w)
 		{
+			// dprintf(2, "TRYPIECE %d %d %c\n", y, x, p->piece[y][x]);
 			if (p->piece[y][x] == '*' && p->board[y + boardy][x + boardx] == p->player)
 				contact++;
 			if (p->piece[y][x] == '*' && p->board[y + boardy][x + boardx] == p->enemy)
@@ -68,20 +69,24 @@ int		solve(t_parser *p)
 	int		y;
 	int		x;
 
-	y = 0;
-	while (y++ < p->height)
+	y = -1;
+	// print_piece(p, p->piece);
+	while (++y < p->height)
 	{
-		x = 0;
-		while (x++ < p->width)
+		x = -1;
+		while (++x < p->width)
 		{
+			// dprintf(2, "TRY %d %d\n", y, x);
 			if (place_piece(p, y, x) == 1)
 			{
-				dprintf(2, "PLACE %d %d\n", y, x);
+				// dprintf(2, "PLACE %d %d\n", y, x);
+				dprintf(1, "%d %d\n", y, x);
 				p->pos_y = y;
 				p->pos_x = x;
 				return (1);
 			}
 		}
 	}
+	printf("0 0\n");
 	return (0);
 }

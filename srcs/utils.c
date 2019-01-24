@@ -20,14 +20,14 @@ void	init_struct(t_parser *p)
 	p->width = 0;
 	p->piece_h = 0;
 	p->piece_w = 0;
-	p->trim_h = 0;
-	p->trim_w = 0;
-	p->psize_h = 0;
-	p->psize_w = 0;
 	p->pos_y = 0;
 	p->pos_x = 0;
 	p->board = 0;
 	p->piece = 0;
+	p->ey = 0;
+	p->ex = 0;
+	p->sx = 0;
+	p->sy = 0;
 }
 
 void	print_board(t_parser *p)
@@ -47,9 +47,21 @@ void	print_piece(t_parser *p, char **piece)
 	int		y;
 
 	y = 0;
-	while (y < p->psize_h)
+	while (y < p->piece_h)
 	{
-		dprintf(2, "-%s-\n", piece[y]);
+		dprintf(2, "[%s]\n", piece[y]);
 		y++;
 	}
 }
+
+// void	print_piece(t_parser *p, char **piece)
+// {
+// 	int		y;
+
+// 	y = 0;
+// 	while (y < p->psize_h)
+// 	{
+// 		dprintf(2, "-%s-\n", piece[y]);
+// 		y++;
+// 	}
+// }
