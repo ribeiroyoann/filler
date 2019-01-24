@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 19:53:09 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/23 17:23:04 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/24 12:32:32 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		place_piece(t_parser *p, int boardy, int boardx)
 	}
 	if (contact == 1)
 	{
-		dprintf(2, "CONTACT\n");
+		dprintf(2, "CONTACT %d %d\n", boardy, boardx);
 		return (1);
 	}
 	return (0);
@@ -69,26 +69,19 @@ int		solve(t_parser *p)
 	int		x;
 
 	y = 0;
-	while (y < p->height)
+	while (y++ < p->height)
 	{
 		x = 0;
-		while (x < p->width)
+		while (x++ < p->width)
 		{
 			if (place_piece(p, y, x) == 1)
 			{
 				dprintf(2, "PLACE %d %d\n", y, x);
-				ft_putnbr(3);
-				ft_putstr(" ");
-				ft_putnbr(4);
-				ft_putchar('\n');
-				// printf("%d %d\n", y, x);
+				p->pos_y = y;
+				p->pos_x = x;
 				return (1);
 			}
-			x++;
 		}
-		y++;
 	}
-	printf("0 0\n");
-	dprintf(2, "NO SOLVE\n");
 	return (0);
 }

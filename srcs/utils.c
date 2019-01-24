@@ -12,6 +12,24 @@
 
 #include "filler.h"
 
+void	init_struct(t_parser *p)
+{
+	p->player = 0;
+	p->enemy = 0;
+	p->height = 0;
+	p->width = 0;
+	p->piece_h = 0;
+	p->piece_w = 0;
+	p->trim_h = 0;
+	p->trim_w = 0;
+	p->psize_h = 0;
+	p->psize_w = 0;
+	p->pos_y = 0;
+	p->pos_x = 0;
+	p->board = 0;
+	p->piece = 0;
+}
+
 void	print_board(t_parser *p)
 {
 	int		y;
@@ -19,7 +37,7 @@ void	print_board(t_parser *p)
 	y = 0;
 	while (y < p->height)
 	{
-		dprintf(2, "%s\n", p->board[y]);
+		dprintf(2, "%03d  %s\n", y, p->board[y]);
 		y++;
 	}
 }
@@ -29,9 +47,9 @@ void	print_piece(t_parser *p, char **piece)
 	int		y;
 
 	y = 0;
-	while (y < p->trim_h)
+	while (y < p->psize_h)
 	{
-		dprintf(2, "%s\n", piece[y]);
+		dprintf(2, "-%s-\n", piece[y]);
 		y++;
 	}
 }

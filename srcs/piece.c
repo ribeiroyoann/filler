@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:39:25 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/23 16:43:08 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/24 12:29:00 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,10 @@ void	trim_piece(t_parser *p, char **stockpiece)
 	int		shift_endw;
 	int		shift_endh;
 	int		y;
+	static int count = 0;
 
+	dprintf(2, "TOUR %d\n", count);
+	count++;
 	shift_h = trim_height(p, stockpiece);
 	shift_w = trim_width(p, stockpiece);
 	shift_endw = trim_width_end(p, stockpiece);
@@ -128,15 +131,15 @@ void	trim_piece(t_parser *p, char **stockpiece)
 	p->trim_h = p->piece_h - shift_h;
 	p->trim_w = p->piece_w - shift_w;
 	y = 0;
-	p->piece = ft_memalloc(sizeof(char *) * p->piece_h - shift_endh - shift_h + 1);
+	p->piece = ft_memalloc(sizeof(char *) * (p->piece_h - shift_endh - shift_h + 1));
 	while (y < p->piece_h - shift_endh - shift_h)
 	{
 		p->piece[y] = ft_strdup_until((stockpiece[shift_h + y] + shift_w), (p->piece_w - shift_endw - shift_w));
 		p->psize_w = ft_strlen(p->piece[y]);
-		dprintf(2, "[%s]\n", p->piece[y]);
+		// dprintf(2, "[%s]\n", p->piece[y]);
 		y++;
 	}
+	p->piece[y] = 0;
 	p->psize_h = y;
-	// p->psize_w = p->piece_w - shift_endw - shift_w;
 	dprintf(2, "PIECE SIZE %d %d\n", p->psize_h, p->psize_w);
 }

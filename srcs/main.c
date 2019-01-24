@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 15:56:05 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/01/23 16:49:40 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/24 12:25:36 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,21 @@ int		main(int argc, char **argv)
 	t_parser	*p;
 
 	p = malloc(sizeof(t_parser));
+	init_struct(p);
 	get_player(p);
 	while (1)
 	{
 		get_board(p);
+		print_board(p);
 		get_piece(p);
 		if (!(solve(p)))
+		{
+			dprintf(2, "EXIT\n");
 			return (0);
+		}
+		dprintf(2, "MAIN [%d %d]\n", p->pos_y, p->pos_x);
+		printf("%d %d\n", p->pos_y, p->pos_x);
+		// break ;
 	}
 	return (0);
 }

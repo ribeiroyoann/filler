@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 15:56:11 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/01/23 16:16:32 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/24 12:05:23 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef	struct s_parser
 	int			trim_w;
 	int			psize_h;
 	int			psize_w;
+	int			pos_y;
+	int			pos_x;
 	char		**board;
 	char		**piece;
 }				t_parser;
@@ -61,6 +63,7 @@ void	trim_piece(t_parser *p, char **stockpiece);
 ** UTILS
 */
 
+void	init_struct(t_parser *p);
 void	print_board(t_parser *p);
 void	print_piece(t_parser *p, char **piece);
 void	print_parsing(t_parser *p);
