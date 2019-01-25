@@ -6,98 +6,45 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:39:25 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/24 15:16:17 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/25 12:19:25 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-int		trim_height(t_parser *p, char **stockpiece)
+void	trim_piece(t_parser *p, char **ogpiece)
 {
 	int		y;
-	int		shift;
+	int		x;
 
+	get_shape(p, ogpiece);
+	dprintf(2, "TRIM\n");
+	p->piece = ft_memalloc(sizeof(char *) * (p->psizey + 1));
+	y = -1;
+	while (++y < p->psizey)
+		p->piece[y] = ft_memalloc(sizeof(char) * p->psizex + 1);
 	y = 0;
-	shift = 0;
-	while (y < p->piece_h)
+	while (y < p->psizey)
 	{
-		if (ft_strchr(stockpiece[y], '*'))
-			return (shift);
-		shift++;
+		p->piece[y] = ft_strnew(p->psizex);
+		x = 0;
+		while (x < p->psizex)
+		{
+			p->piece[y][x] = ogpiece[y + p->sy][x + p->sx];
+			dprintf(2, "%c", p->piece[y][x]);
+			x++;
+		}
+		dprintf(2, "\n");
 		y++;
 	}
-	return (shift);
+	dprintf(2, "ENDTRIM\n");
 }
 
-int		trim_width(t_parser *p, char **stockpiece)
-{
-	int		y;
-	int		x;
-	int		shift;
-
-	shift = 0;
-	x = 0;
-	while (x < p->piece_w)
-	{
-		y = 0;
-		while (y < p->piece_h)
-		{
-			if (stockpiece[y][x] == '*')
-				return (shift);
-			y++;
-		}
-		shift++;
-		x++;
-	}
-	return (shift);
-}
-
-int		trim_height_end(t_parser *p, char **stockpiece)
-{
-	int		y;
-	int		shift;
-
-	y = p->piece_h - 1;
-	shift = 0;
-	while (y > 0)
-	{
-		if (ft_strchr(stockpiece[y], '*'))
-			return (shift);
-		shift++;
-		y--;
-	}
-	return (shift);
-}
-
-int		trim_width_end(t_parser *p, char **stockpiece)
-{
-	int		y;
-	int		x;
-	int		shift;
-
-	shift = 0;
-	x = p->piece_w - 1;
-	while (x >= 0)
-	{
-		y = p->piece_h - 1;
-		while (y >= 0)
-		{
-			if (stockpiece[y][x] == '*')
-				return (shift);
-			y--;
-		}
-		shift++;
-		x--;
-	}
-	return (shift);
-}
-
-void	get_shape(t_parser *p)
+void	get_shape(t_parser *p, char **ogpiece)
 {
 	int		y;
 	int		x;
 
-	dprintf(2, "PIECE %d %d\n", p->piece_h, p->piece_w);
 	p->ey = 0;
 	p->ex = 0;
 	p->sy = p->piece_h;
@@ -108,7 +55,7 @@ void	get_shape(t_parser *p)
 		x = 0;
 		while (x < p->piece_w)
 		{
-			if (p->piece[y][x] == '*')
+			if (ogpiece[y][x] == '*')
 			{
 				if (y > p->ey)
 					p->ey = y;
@@ -125,6 +72,6 @@ void	get_shape(t_parser *p)
 	}
 	p->psizey = p->ey - p->sy + 1;
 	p->psizex = p->ex - p->sx + 1;
-	print_piece(p, p->piece);
-	dprintf(2, "PSIZE %d %d\n", p->psizey, p->psizex);
+	dprintf(2, "REAL PIECE %d %d\n", p->psizey, p->psizex);
+	dprintf(2, "sy %d sx %d ey %d ex %d\n", p->sy, p->sx, p->ey, p->ex);
 }

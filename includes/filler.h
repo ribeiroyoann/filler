@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 15:56:11 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/01/24 19:44:43 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/25 11:41:03 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ int		solve(t_parser *p);
 ** PIECE
 */
 
-void	get_shape(t_parser *p);
+void	trim_piece(t_parser *p, char **ogpiece);
+void	get_shape(t_parser *p, char **ogpiece);
 
 
 /*

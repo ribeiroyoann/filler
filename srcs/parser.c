@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 13:53:48 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/24 19:48:20 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/25 11:42:17 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,21 +55,24 @@ int		get_board(t_parser *p)
 void	get_piece(t_parser *p)
 {
 	char	*line;
+	char	**ogpiece;
 	int		y;
 
 	get_next_line(0, &line);
+	dprintf(2, "%s\n", line);
 	line += 6;
 	p->piece_h = ft_atoi(line);
 	while (ft_isdigit(*line))
 		line++;
 	p->piece_w = ft_atoi(line);
-	p->piece = ft_memalloc(sizeof(char *) * p->piece_h + 1);
+	ogpiece = ft_memalloc(sizeof(char *) * p->piece_h + 1);
 	y = 0;
 	while (y < p->piece_h)
 	{
 		get_next_line(0, &line);
-		p->piece[y] = ft_strdup(line);
+		ogpiece[y] = ft_strdup(line);
+		dprintf(2, "%s\n", ogpiece[y]);
 		y++;
 	}
-	get_shape(p);
+	trim_piece(p, ogpiece);
 }
