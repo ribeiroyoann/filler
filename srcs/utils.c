@@ -28,6 +28,7 @@ void	init_struct(t_parser *p)
 	p->ex = 0;
 	p->sx = 0;
 	p->sy = 0;
+	p->heatscore = 1000;
 }
 
 void	print_board(t_parser *p)
@@ -53,15 +54,3 @@ void	print_piece(t_parser *p, char **piece)
 		y++;
 	}
 }
-
-// void	print_piece(t_parser *p, char **piece)
-// {
-// 	int		y;
-
-// 	y = 0;
-// 	while (y < p->psize_h)
-// 	{
-// 		dprintf(2, "-%s-\n", piece[y]);
-// 		y++;
-// 	}
-// }

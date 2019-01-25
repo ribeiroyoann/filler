@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:39:25 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/25 12:19:25 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/25 12:34:28 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ void	trim_piece(t_parser *p, char **ogpiece)
 		while (x < p->psizex)
 		{
 			p->piece[y][x] = ogpiece[y + p->sy][x + p->sx];
-			dprintf(2, "%c", p->piece[y][x]);
+			dprintf(2, "%c" ,p->piece[y][x]);
 			x++;
 		}
 		dprintf(2, "\n");
 		y++;
 	}
-	dprintf(2, "ENDTRIM\n");
+	dprintf(2, "ENDTRIM\n\n");
 }
 
 void	get_shape(t_parser *p, char **ogpiece)

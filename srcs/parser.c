@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 13:53:48 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/25 11:42:17 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/25 13:29:37 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,12 @@ int		get_board(t_parser *p)
 
 	get_next_line(0, &line);
 	line += 8;
-	p->height = ft_atoi(line);
+	if (!p->height)
+		p->height = ft_atoi(line);
 	while (ft_isdigit(*line))
 		line++;
-	p->width = ft_atoi(line);
+	if (!p->width)
+		p->width = ft_atoi(line);
 	get_next_line(0, &line);
 	p->board = ft_memalloc(sizeof(char *) * p->height + 1);
 	y = 0;
@@ -48,7 +50,7 @@ int		get_board(t_parser *p)
 		p->board[y] = ft_strdup(line + 4);
 		y++;
 	}
-	create_inithmap(p);
+	// create_inithmap(p);
 	return (0);
 }
 

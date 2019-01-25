@@ -6,13 +6,22 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 15:56:11 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/01/25 11:41:03 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/25 13:04:48 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 
 #include <stdio.h>
+
+#define RED   "\x1B[31m"
+#define GRN   "\x1B[32m"
+#define YEL   "\x1B[33m"
+#define BLU   "\x1B[34m"
+#define MAG   "\x1B[35m"
+#define CYN   "\x1B[36m"
+#define WHT   "\x1B[37m"
+#define RESET "\x1B[0m"
 
 typedef	struct s_parser
 {
@@ -30,6 +39,7 @@ typedef	struct s_parser
 	int			psizex;
 	int			pos_y;
 	int			pos_x;
+	int			heatscore;
 	char		**board;
 	int			**hmap;
 	char		**piece;
@@ -51,7 +61,7 @@ int		parser(t_parser *p);
 */
 
 int		get_position(t_parser *p);
-int		place_piece(t_parser *p, int boardy, int boardx);
+int		is_placeable(t_parser *p, int boardy, int boardx);
 int		solve(t_parser *p);
 
 /*
