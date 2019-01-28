@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 19:53:09 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/25 13:43:45 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/28 18:12:15 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,7 @@ int		calculate_heat(t_parser *p, int boardy, int boardx)
 		while (x < p->psizex)
 		{
 			if (p->piece[y][x] == '*')
-			{
 				score += p->hmap[y + boardy][x + boardx];
-			}
 			x++;
 		}
 		y++;
@@ -41,9 +39,12 @@ void	compare_heat(t_parser *p, int boardy, int boardx)
 	int		score;
 
 	score = calculate_heat(p, boardy, boardx);
+	dprintf(2, "SCORE %d\n", score);
+	dprintf(2, "HEATSCORE %d\n", p->heatscore);
 	if (score < p->heatscore)
 	{
 		p->heatscore = score;
+		dprintf(2, "COMPARE HEAT = %d - %d ; %d - %d\n", boardy, p->sy, boardx, p->sx);
 		p->pos_y = boardy - p->sy;
 		p->pos_x = boardx - p->sx;
 	}
@@ -80,9 +81,11 @@ int		solve(t_parser *p)
 {
 	int		y;
 	int		x;
+	int  	placeable;
 
+	p->heatscore = p->width * p->width;
+	placeable = 0;
 	y = -1;
-	p->heatscore = 0;
 	while (++y < p->height)
 	{
 		x = -1;
@@ -90,16 +93,17 @@ int		solve(t_parser *p)
 		{
 			if (is_placeable(p, y, x) == 1)
 			{
-				// compare_heat(p, y, x);
-				dprintf(2, "CONTACT %d %d\n", y - p->sy, x - p->sx);
-				dprintf(1, "%d %d\n", y - p->sy, x - p->sx);
-				return (1);
+				dprintf(2, "CONTACT %d %d\n", y, x);
+				compare_heat(p, y, x);
+				placeable = 1;
 			}
 		}
 	}
-	// dprintf(1, "%d %d\n", p->pos_y, p->pos_x);
-	// dprintf(2, "FINAL %d %d\n", p->pos_y, p->pos_x);
-	return (0);
+	dprintf(2, "FINAL CONTACT %d %d\n", p->pos_y, p->pos_x);
+	if (!placeable)
+		return (0);
+	dprintf(1, "%d %d\n", p->pos_y, p->pos_x);
+	return (1);
 }
 
 // NEED FUNCTION TO RETURN 0 IF NOT PLACEABLE AT ALL

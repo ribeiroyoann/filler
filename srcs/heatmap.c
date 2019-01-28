@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 19:35:36 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/24 20:34:16 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/28 18:16:05 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	create_inithmap(t_parser *p)
 		}
 		y++;
 	}
-	print_hmap(p);
+	// print_hmap(p);
 	surround_hmap(p);
 	fill_hmap(p);
 	print_hmap(p);

@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 13:53:48 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/25 13:29:37 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/28 17:11:41 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		get_board(t_parser *p)
 		p->board[y] = ft_strdup(line + 4);
 		y++;
 	}
-	// create_inithmap(p);
+	create_inithmap(p);
 	return (0);
 }
 
