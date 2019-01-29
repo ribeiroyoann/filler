@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yoann <yoann@student.42.fr>                +#+  +:+       +#+         #
+#    By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/17 15:48:36 by yoribeir          #+#    #+#              #
-#    Updated: 2019/01/28 18:16:46 by yoann            ###   ########.fr        #
+#    Updated: 2019/01/29 12:36:04 by yoribeir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,6 @@ fclean: clean
 
 test: all
 	cp -f yoribeir.filler res/players
-	./res/filler_vm -f ./res/maps/map03 -p1 ./res/players/lcharvol.filler -p2 ./res/players/yoribeir.filler 2>out -t 1
+	./res/filler_vm -f ./res/maps/map01 -p2 ./res/players/hcao.filler -p1 ./res/players/yoribeir.filler 2>out -t 1
 
 re: fclean all
