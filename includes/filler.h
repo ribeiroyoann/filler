@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   filler.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 15:56:11 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/01/25 13:04:48 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/29 14:56:56 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	get_shape(t_parser *p, char **ogpiece);
 ** HEATMAP
 */
 
-void	create_inithmap(t_parser *p);
+void	get_heatmap(t_parser *p);
 void	print_hmap(t_parser *p);
 
 /*

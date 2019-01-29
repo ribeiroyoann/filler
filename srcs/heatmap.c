@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   heatmap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 19:35:36 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/28 18:16:05 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/29 14:59:10 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
+
+#define HEATMAP p->hmap[y][x]
 
 void	surround_hmap(t_parser *p)
 {
@@ -42,22 +44,28 @@ void	surround_hmap(t_parser *p)
 
 void	assign_hmap(t_parser *p, int y, int x, int value)
 {
-	if (x + 1 < p->width && p->hmap[y][x + 1] == value)
-		p->hmap[y][x] = value + 1;
+	if (x + 1 < p->width)
+	{
+		if (p->hmap[y][x + 1] == value)
+			HEATMAP = value + 1;
+		if (y + 1 < p->height && p->hmap[y + 1][x + 1] == value)
+			HEATMAP = value + 1;
+		if (y - 1 >= 0 && p->hmap[y - 1][x + 1] == value)
+			HEATMAP = value + 1;
+	}
+	if (x - 1 >= 0)
+	{
+		if (p->hmap[y][x - 1] == value)
+			HEATMAP = value + 1;
+		if (y - 1 >= 0 && p->hmap[y - 1][x - 1] == value)
+			HEATMAP = value + 1;
+		if (y + 1 < p->height && p->hmap[y + 1][x - 1] == value)
+			HEATMAP = value + 1;
+	}
 	if (y + 1 < p->height && p->hmap[y + 1][x] == value)
-		p->hmap[y][x] = value + 1;
-	if (x + 1 < p->width && y + 1 < p->height && p->hmap[y + 1][x + 1] == value)
-		p->hmap[y][x] = value + 1;
-	if (x + 1 < p->width && y - 1 >= 0 && p->hmap[y - 1][x + 1] == value)
-		p->hmap[y][x] = value + 1;
-	if (x - 1 >= 0 && p->hmap[y][x - 1] == value)
-		p->hmap[y][x] = value + 1;
+		HEATMAP = value + 1;
 	if (y - 1 >= 0 && p->hmap[y - 1][x] == value)
-		p->hmap[y][x] = value + 1;
-	if (x - 1 >= 0 && y - 1 >= 0 && p->hmap[y - 1][x - 1] == value)
-		p->hmap[y][x] = value + 1;
-	if (x - 1 >= 0 && y + 1 < p->height && p->hmap[y + 1][x - 1] == value)
-		p->hmap[y][x] = value + 1;
+		HEATMAP = value + 1;
 }
 
 void	fill_hmap(t_parser *p)
@@ -66,14 +74,14 @@ void	fill_hmap(t_parser *p)
 	int		x;
 	int		value;
 
-	y = 0;
+	y = 1;
 	value = 1;
 	while (value < p->width)
 	{
-		while (y < p->height)
+		while (y < p->height - 1)
 		{
-			x = 0;
-			while (x < p->width)
+			x = 1;
+			while (x < p->width - 1)
 			{
 				if (p->hmap[y][x] == 0)
 					assign_hmap(p, y, x, value);
@@ -87,7 +95,7 @@ void	fill_hmap(t_parser *p)
 	}
 }
 
-void	create_inithmap(t_parser *p)
+void	get_heatmap(t_parser *p)
 {
 	int		y;
 	int		x;
@@ -118,7 +126,7 @@ void	create_inithmap(t_parser *p)
 	// print_hmap(p);
 	surround_hmap(p);
 	fill_hmap(p);
-	print_hmap(p);
+	// print_hmap(p);
 }
 
 void	print_hmap(t_parser *p)

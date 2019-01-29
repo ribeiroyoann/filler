@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   piece.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:39:25 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/25 12:34:28 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/29 15:02:40 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	trim_piece(t_parser *p, char **ogpiece)
 	int		x;
 
 	get_shape(p, ogpiece);
-	dprintf(2, "TRIM\n");
 	p->piece = ft_memalloc(sizeof(char *) * (p->psizey + 1));
 	y = -1;
 	while (++y < p->psizey)
@@ -31,13 +30,10 @@ void	trim_piece(t_parser *p, char **ogpiece)
 		while (x < p->psizex)
 		{
 			p->piece[y][x] = ogpiece[y + p->sy][x + p->sx];
-			dprintf(2, "%c" ,p->piece[y][x]);
 			x++;
 		}
-		dprintf(2, "\n");
 		y++;
 	}
-	dprintf(2, "ENDTRIM\n\n");
 }
 
 void	get_shape(t_parser *p, char **ogpiece)
@@ -72,6 +68,4 @@ void	get_shape(t_parser *p, char **ogpiece)
 	}
 	p->psizey = p->ey - p->sy + 1;
 	p->psizex = p->ex - p->sx + 1;
-	dprintf(2, "REAL PIECE %d %d\n", p->psizey, p->psizex);
-	dprintf(2, "sy %d sx %d ey %d ex %d\n", p->sy, p->sx, p->ey, p->ex);
 }

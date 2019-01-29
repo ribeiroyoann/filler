@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 13:53:48 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/28 17:11:41 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/29 15:03:46 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		get_player(t_parser *p)
 		p->player = 'X';
 	p->player = (line[10] == '1') ? 'O' : 'X';
 	p->enemy = (p->player == 'O') ? 'X' : 'O';
-	dprintf(2, "ME %c CPU %c\n", p->player, p->enemy);
+	// dprintf(2, "ME %c CPU %c\n", p->player, p->enemy);
 	ft_strdel(&line);
 	return (1);
 }
@@ -50,8 +50,7 @@ int		get_board(t_parser *p)
 		p->board[y] = ft_strdup(line + 4);
 		y++;
 	}
-	create_inithmap(p);
-	return (0);
+	return (1);
 }
 
 void	get_piece(t_parser *p)
@@ -61,7 +60,6 @@ void	get_piece(t_parser *p)
 	int		y;
 
 	get_next_line(0, &line);
-	dprintf(2, "%s\n", line);
 	line += 6;
 	p->piece_h = ft_atoi(line);
 	while (ft_isdigit(*line))
@@ -73,7 +71,6 @@ void	get_piece(t_parser *p)
 	{
 		get_next_line(0, &line);
 		ogpiece[y] = ft_strdup(line);
-		dprintf(2, "%s\n", ogpiece[y]);
 		y++;
 	}
 	trim_piece(p, ogpiece);

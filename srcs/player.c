@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 19:53:09 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/29 12:37:28 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/01/29 15:02:30 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,9 @@ void	compare_heat(t_parser *p, int boardy, int boardx)
 	int		score;
 
 	score = calculate_heat(p, boardy, boardx);
-	dprintf(2, "SCORE %d\n", score);
-	dprintf(2, "HEATSCORE %d\n", p->heatscore);
 	if (score < p->heatscore)
 	{
 		p->heatscore = score;
-		dprintf(2, "COMPARE HEAT = %d - %d ; %d - %d\n", boardy, p->sy, boardx, p->sx);
 		p->pos_y = boardy - p->sy;
 		p->pos_x = boardx - p->sx;
 	}
@@ -93,18 +90,15 @@ int		solve(t_parser *p)
 		{
 			if (is_placeable(p, y, x) == 1)
 			{
-				dprintf(2, "CONTACT %d %d\n", y, x);
+				// dprintf(2, "CONTACT %d %d\n", y, x);
 				compare_heat(p, y, x);
 				placeable = 1;
 			}
 		}
 	}
-	dprintf(2, "FINAL CONTACT %d %d\n", p->pos_y, p->pos_x);
+	// dprintf(2, "FINAL CONTACT %d %d\n", p->pos_y, p->pos_x);
 	if (!placeable)
 		return (0);
 	dprintf(1, "%d %d\n", p->pos_y, p->pos_x);
 	return (1);
 }
-
-// NEED FUNCTION TO RETURN 0 IF NOT PLACEABLE AT ALL
-// COMPARE HEAT SEG FAULT

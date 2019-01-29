@@ -1,4 +1,53 @@
-map 01:
--hcao p1 = 6.107
--hcao p2 = 8.322
+*************************************
+***** FILLER_CORRECTION RESULTS *****
+*************************************
 
+*** yoribeir VS abanlin - map00 ***
+1    players/abanlin.filler won - 46AGAINST100
+2    players/yoribeir.filler won - 88AGAINST82
+3    players/abanlin.filler won - 26AGAINST120
+4    players/yoribeir.filler won - 85AGAINST73
+5    players/yoribeir.filler won - 101AGAINST63
+
+yoribeir   3/5
+abanlin    2/5
+
+*** yoribeir VS carli - map01 ***
+1    players/yoribeir.filler won - 231AGAINST130
+2    players/carli.filler won - 174AGAINST174
+3    players/yoribeir.filler won - 272AGAINST67
+4    players/yoribeir.filler won - 338AGAINST2
+5    players/yoribeir.filler won - 263AGAINST86
+
+yoribeir   4/5
+carli      1/5
+
+*** yoribeir VS carli - map02 ***
+1    players/yoribeir.filler won - 1586AGAINST387
+2    players/carli.filler won - 623AGAINST989
+3    players/yoribeir.filler won - 1083AGAINST584
+4    players/yoribeir.filler won - 1236AGAINST774
+5    players/yoribeir.filler won - 1626AGAINST337
+
+yoribeir   4/5
+carli      1/5
+
+*** yoribeir VS grati - map00 ***
+1    players/grati.filler won - 67AGAINST80
+2    players/yoribeir.filler won - 85AGAINST76
+3    players/yoribeir.filler won - 95AGAINST57
+4    players/yoribeir.filler won - 95AGAINST46
+5    players/yoribeir.filler won - 100AGAINST68
+
+yoribeir   4/5
+grati      1/5
+
+*** yoribeir VS hcao - map00 ***
+1    players/yoribeir.filler won - 82AGAINST80
+2    players/yoribeir.filler won - 98AGAINST78
+3    players/hcao.filler won - 61AGAINST109
+4    players/hcao.filler won - 52AGAINST113
+5    players/hcao.filler won - 73AGAINST83
+
+yoribeir   2/5
+hcao       3/5
