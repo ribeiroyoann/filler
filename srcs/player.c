@@ -6,11 +6,13 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 19:53:09 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/27 18:21:08 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/27 18:30:29 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
+
+#define PIECE p->piece[y][x]
 
 int		calculate_heat(t_parser *p, int boardy, int boardx)
 {
@@ -25,7 +27,7 @@ int		calculate_heat(t_parser *p, int boardy, int boardx)
 		x = 0;
 		while (x < p->psizex)
 		{
-			if (p->piece[y][x] == '*')
+			if (PIECE == '*')
 				score += p->hmap[y + boardy][x + boardx];
 			x++;
 		}
@@ -47,7 +49,6 @@ void	compare_heat(t_parser *p, int boardy, int boardx)
 	}
 }
 
-
 int		is_placeable(t_parser *p, int boardy, int boardx)
 {
 	int		y;
@@ -63,9 +64,9 @@ int		is_placeable(t_parser *p, int boardy, int boardx)
 		x = 0;
 		while (x < p->psizex)
 		{
-			if (p->piece[y][x] == '*' && p->board[y + boardy][x + boardx] == p->player)
+			if (PIECE == '*' && p->board[y + boardy][x + boardx] == p->player)
 				contact++;
-			if (p->piece[y][x] == '*' && p->board[y + boardy][x + boardx] == p->enemy)
+			if (PIECE == '*' && p->board[y + boardy][x + boardx] == p->enemy)
 				return (0);
 			x++;
 		}
@@ -78,7 +79,7 @@ int		solve(t_parser *p)
 {
 	int		y;
 	int		x;
-	int  	placeable;
+	int		placeable;
 
 	p->heatscore = p->width * p->width;
 	placeable = 0;
@@ -100,6 +101,5 @@ int		solve(t_parser *p)
 	free_hmap(p);
 	if (!placeable)
 		return (0);
-	dprintf(1, "%d %d\n", p->pos_y, p->pos_x);
 	return (1);
 }

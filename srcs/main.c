@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 15:56:05 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/27 18:21:49 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/27 18:26:09 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int		main(int argc, char **argv)
 		get_piece(p);
 		if (!solve(p))
 			break ;
+		else
+			dprintf(1, "%d %d\n", p->pos_y, p->pos_x);
 	}
 	free(p);
 	// while (1);

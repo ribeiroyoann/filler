@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 19:35:36 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/27 17:34:49 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/27 18:29:06 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void	surround_hmap(t_parser *p)
 {
-	int 	y;
+	int		y;
 	int		x;
 
 	y = 1;
@@ -70,7 +70,7 @@ void	assign_hmap(t_parser *p, int y, int x, int value)
 
 void	fill_hmap(t_parser *p)
 {
-	int 	y;
+	int		y;
 	int		x;
 	int		value;
 
@@ -100,18 +100,15 @@ void	get_heatmap(t_parser *p)
 	int		y;
 	int		x;
 
-	y = 0;
+	y = -1;
 	p->hmap = malloc(sizeof(int *) * p->height + 1);
-	while (y < p->height)
-	{
+	while (++y < p->height)
 		p->hmap[y] = malloc(sizeof(int) * p->width + 1);
-		y++;
-	}
-	y = 0;
-	while (y < p->height)
+	y = -1;
+	while (++y < p->height)
 	{
-		x = 0;
-		while (x < p->width)
+		x = -1;
+		while (++x < p->width)
 		{
 			if (p->board[y][x] == '.')
 				p->hmap[y][x] = 0;
@@ -119,20 +116,18 @@ void	get_heatmap(t_parser *p)
 				p->hmap[y][x] = -1;
 			if (p->board[y][x] == p->enemy)
 				p->hmap[y][x] = -2;
-			x++;
 		}
-		y++;
 	}
 	surround_hmap(p);
 	fill_hmap(p);
-	// print_hmap(p);
 }
 
 void	print_hmap(t_parser *p)
 {
-	int y = 0;
-	int x = 0;
+	int y;
+	int x;
 
+	y = 0;
 	dprintf(2, "---------\n");
 	while (y < p->height)
 	{
