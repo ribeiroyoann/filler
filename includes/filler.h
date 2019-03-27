@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 15:56:11 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/01/29 14:56:56 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/27 18:21:44 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,3 +87,8 @@ void	init_struct(t_parser *p);
 void	print_board(t_parser *p);
 void	print_piece(t_parser *p, char **piece);
 void	print_parsing(t_parser *p);
+
+void	free_piece(t_parser *p);
+void	free_2darray(t_parser *p, char **arr, int size);
+void	free_hmap(t_parser *p);
+void	ft_intdel(int **as);

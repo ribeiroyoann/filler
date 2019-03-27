@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 19:35:36 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/29 14:59:10 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/27 17:34:49 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,14 @@ void	fill_hmap(t_parser *p)
 	int		x;
 	int		value;
 
-	y = 1;
+	y = 0;
 	value = 1;
 	while (value < p->width)
 	{
-		while (y < p->height - 1)
+		while (y < p->height)
 		{
-			x = 1;
-			while (x < p->width - 1)
+			x = 0;
+			while (x < p->width)
 			{
 				if (p->hmap[y][x] == 0)
 					assign_hmap(p, y, x, value);
@@ -123,7 +123,6 @@ void	get_heatmap(t_parser *p)
 		}
 		y++;
 	}
-	// print_hmap(p);
 	surround_hmap(p);
 	fill_hmap(p);
 	// print_hmap(p);

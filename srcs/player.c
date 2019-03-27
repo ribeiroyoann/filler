@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 19:53:09 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/29 15:02:30 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/27 18:21:08 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,14 @@ int		solve(t_parser *p)
 		{
 			if (is_placeable(p, y, x) == 1)
 			{
-				// dprintf(2, "CONTACT %d %d\n", y, x);
 				compare_heat(p, y, x);
 				placeable = 1;
 			}
 		}
 	}
-	// dprintf(2, "FINAL CONTACT %d %d\n", p->pos_y, p->pos_x);
+	free_2darray(p, p->board, p->height);
+	free_2darray(p, p->piece, p->psizey);
+	free_hmap(p);
 	if (!placeable)
 		return (0);
 	dprintf(1, "%d %d\n", p->pos_y, p->pos_x);

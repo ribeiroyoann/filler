@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:39:25 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/29 15:02:40 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/27 15:16:19 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@ void	trim_piece(t_parser *p, char **ogpiece)
 
 	get_shape(p, ogpiece);
 	p->piece = ft_memalloc(sizeof(char *) * (p->psizey + 1));
-	y = -1;
-	while (++y < p->psizey)
-		p->piece[y] = ft_memalloc(sizeof(char) * p->psizex + 1);
 	y = 0;
 	while (y < p->psizey)
 	{

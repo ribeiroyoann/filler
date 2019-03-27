@@ -31,6 +31,55 @@ void	init_struct(t_parser *p)
 	p->heatscore = 1000;
 }
 
+void	ft_intdel(int **as)
+{
+	if (as)
+	{
+		free(*as);
+		*as = NULL;
+	}
+}
+
+void	free_2darray(t_parser *p, char **arr, int size)
+{
+	int		y;
+
+	y = 0;
+	while (y < size)
+	{
+		ft_strdel(&arr[y]);
+		y++;
+	}
+	free(arr);
+}
+
+void	free_hmap(t_parser *p)
+{
+	int		y;
+
+	y = 0;
+	while (y < p->height)
+	{
+		ft_intdel(&p->hmap[y]);
+		y++;
+	}
+	free(p->hmap);
+}
+
+void	free_piece(t_parser *p)
+{
+	int		y;
+
+	y = 0;
+	while (y < p->piece_h)
+	{
+		ft_strdel(&p->piece[y]);
+		y++;
+	}
+	free(p->piece);
+}
+
+
 void	print_board(t_parser *p)
 {
 	int		y;

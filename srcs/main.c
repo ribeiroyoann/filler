@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 15:56:05 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/01/29 14:57:01 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/27 18:21:49 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ int		main(int argc, char **argv)
 		get_heatmap(p);
 		get_piece(p);
 		if (!solve(p))
-			return (0);
+			break ;
 	}
+	free(p);
+	// while (1);
 	return (0);
 }
