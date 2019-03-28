@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 15:56:05 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/27 18:26:09 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/28 17:03:28 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,19 @@ int		main(int argc, char **argv)
 {
 	t_parser	*p;
 
-	p = malloc(sizeof(t_parser));
+	if (!(p = malloc(sizeof(t_parser))))
+		return (ft_puterror("Malloc error"));
 	init_struct(p);
-	get_player(p);
+	if (!get_player(p))
+		return (1);
 	while (1)
 	{
-		get_board(p);
-		get_heatmap(p);
-		get_piece(p);
+		if (!get_board(p))
+			return (1);
+		if (!get_heatmap(p))
+			return (1);
+		if (!get_piece(p))
+			return (1);
 		if (!solve(p))
 			break ;
 		else

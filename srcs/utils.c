@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 18:21:38 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/27 18:24:30 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/28 16:15:18 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ void	init_struct(t_parser *p)
 	p->sx = 0;
 	p->sy = 0;
 	p->heatscore = 1000;
+}
+
+int		ft_puterror(char *s)
+{
+	ft_putendl_fd(s, 2);
+	return (0);
 }
 
 void	ft_intdel(int **as)

@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 15:56:11 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/27 18:21:44 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/28 16:56:58 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef	struct s_parser
 
 int		get_player(t_parser *p);
 int		get_board(t_parser *p);
-void	get_piece(t_parser *p);
+int		get_piece(t_parser *p);
 int		parser(t_parser *p);
 
 
@@ -68,7 +68,7 @@ int		solve(t_parser *p);
 ** PIECE
 */
 
-void	trim_piece(t_parser *p, char **ogpiece);
+int		trim_piece(t_parser *p, char **ogpiece);
 void	get_shape(t_parser *p, char **ogpiece);
 
 
@@ -76,8 +76,9 @@ void	get_shape(t_parser *p, char **ogpiece);
 ** HEATMAP
 */
 
-void	get_heatmap(t_parser *p);
+int		get_heatmap(t_parser *p);
 void	print_hmap(t_parser *p);
+void	fill_hmap(t_parser *p);
 
 /*
 ** UTILS
@@ -92,3 +93,4 @@ void	free_piece(t_parser *p);
 void	free_2darray(t_parser *p, char **arr, int size);
 void	free_hmap(t_parser *p);
 void	ft_intdel(int **as);
+int		ft_puterror(char *s);

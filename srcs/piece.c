@@ -6,23 +6,27 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:39:25 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/27 18:23:35 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/28 16:55:49 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void	trim_piece(t_parser *p, char **ogpiece)
+int		trim_piece(t_parser *p, char **ogpiece)
 {
 	int		y;
 	int		x;
 
+	p->ey = 0;
+	p->ex = 0;
 	get_shape(p, ogpiece);
-	p->piece = ft_memalloc(sizeof(char *) * (p->psizey + 1));
+	if (!(p->piece = ft_memalloc(sizeof(char *) * (p->psizey + 1))))
+		return (0);
 	y = 0;
 	while (y < p->psizey)
 	{
-		p->piece[y] = ft_strnew(p->psizex);
+		if (!(p->piece[y] = ft_strnew(p->psizex)))
+			return (0);
 		x = 0;
 		while (x < p->psizex)
 		{
@@ -31,6 +35,7 @@ void	trim_piece(t_parser *p, char **ogpiece)
 		}
 		y++;
 	}
+	return (1);
 }
 
 void	get_shape(t_parser *p, char **ogpiece)
@@ -38,16 +43,13 @@ void	get_shape(t_parser *p, char **ogpiece)
 	int		y;
 	int		x;
 
-	p->ey = 0;
-	p->ex = 0;
 	p->sy = p->piece_h;
 	p->sx = p->piece_w;
-	y = 0;
-	while (y < p->piece_h)
+	y = -1;
+	while (++y < p->piece_h)
 	{
-		x = 0;
-		while (x < p->piece_w)
-		{
+		x = -1;
+		while (++x < p->piece_w)
 			if (ogpiece[y][x] == '*')
 			{
 				if (y > p->ey)
@@ -59,9 +61,6 @@ void	get_shape(t_parser *p, char **ogpiece)
 				if (x < p->sx)
 					p->sx = x;
 			}
-			x++;
-		}
-		y++;
 	}
 	p->psizey = p->ey - p->sy + 1;
 	p->psizex = p->ex - p->sx + 1;

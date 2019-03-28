@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 19:35:36 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/27 18:29:06 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/28 17:02:33 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	surround_hmap(t_parser *p)
 		}
 		y++;
 	}
+	fill_hmap(p);
 }
 
 void	assign_hmap(t_parser *p, int y, int x, int value)
@@ -95,15 +96,17 @@ void	fill_hmap(t_parser *p)
 	}
 }
 
-void	get_heatmap(t_parser *p)
+int		get_heatmap(t_parser *p)
 {
 	int		y;
 	int		x;
 
 	y = -1;
-	p->hmap = malloc(sizeof(int *) * p->height + 1);
+	if (!(p->hmap = malloc(sizeof(int *) * p->height + 1)))
+		return (ft_puterror("Malloc error"));
 	while (++y < p->height)
-		p->hmap[y] = malloc(sizeof(int) * p->width + 1);
+		if (!(p->hmap[y] = malloc(sizeof(int) * p->width + 1)))
+			return (ft_puterror("Malloc error"));
 	y = -1;
 	while (++y < p->height)
 	{
@@ -111,15 +114,15 @@ void	get_heatmap(t_parser *p)
 		while (++x < p->width)
 		{
 			if (p->board[y][x] == '.')
-				p->hmap[y][x] = 0;
+				HEATMAP = 0;
 			if (p->board[y][x] == p->player)
-				p->hmap[y][x] = -1;
+				HEATMAP = -1;
 			if (p->board[y][x] == p->enemy)
-				p->hmap[y][x] = -2;
+				HEATMAP = -2;
 		}
 	}
 	surround_hmap(p);
-	fill_hmap(p);
+	return (1);
 }
 
 void	print_hmap(t_parser *p)
