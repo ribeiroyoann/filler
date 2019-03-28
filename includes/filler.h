@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 15:56:11 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/28 16:56:58 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/28 17:53:52 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,3 +94,4 @@ void	free_2darray(t_parser *p, char **arr, int size);
 void	free_hmap(t_parser *p);
 void	ft_intdel(int **as);
 int		ft_puterror(char *s);
+void	print_result(t_parser *p);

@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 19:35:36 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/28 17:02:33 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/28 17:59:49 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,25 +123,4 @@ int		get_heatmap(t_parser *p)
 	}
 	surround_hmap(p);
 	return (1);
-}
-
-void	print_hmap(t_parser *p)
-{
-	int y;
-	int x;
-
-	y = 0;
-	dprintf(2, "---------\n");
-	while (y < p->height)
-	{
-		x = 0;
-		while (x < p->width)
-		{
-			dprintf(2, "%d", p->hmap[y][x]);
-			x++;
-		}
-		dprintf(2, "\n");
-		y++;
-	}
-	dprintf(2, "\n");
 }

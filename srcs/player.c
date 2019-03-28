@@ -6,13 +6,21 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 19:53:09 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/27 18:30:29 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/28 17:53:44 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
 #define PIECE p->piece[y][x]
+
+void	print_result(t_parser *p)
+{
+	ft_putnbr(p->pos_y);
+	ft_putchar(' ');
+	ft_putnbr(p->pos_x);
+	ft_putchar('\n');
+}
 
 int		calculate_heat(t_parser *p, int boardy, int boardx)
 {

@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:39:25 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/28 16:55:49 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/28 17:58:51 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int		trim_piece(t_parser *p, char **ogpiece)
 	p->ex = 0;
 	get_shape(p, ogpiece);
 	if (!(p->piece = ft_memalloc(sizeof(char *) * (p->psizey + 1))))
-		return (0);
+		return (ft_puterror("Malloc error"));
 	y = 0;
 	while (y < p->psizey)
 	{
 		if (!(p->piece[y] = ft_strnew(p->psizex)))
-			return (0);
+			return (ft_puterror("Malloc error"));
 		x = 0;
 		while (x < p->psizex)
 		{

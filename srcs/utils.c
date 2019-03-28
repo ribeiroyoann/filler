@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 18:21:38 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/28 16:15:18 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/28 18:02:31 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,6 @@ int		ft_puterror(char *s)
 	return (0);
 }
 
-void	ft_intdel(int **as)
-{
-	if (as)
-	{
-		free(*as);
-		*as = NULL;
-	}
-}
-
 void	free_2darray(t_parser *p, char **arr, int size)
 {
 	int		y;
@@ -66,7 +57,8 @@ void	free_hmap(t_parser *p)
 	y = 0;
 	while (y < p->height)
 	{
-		ft_intdel(&p->hmap[y]);
+		free(p->hmap[y]);
+		p->hmap[y] = NULL;
 		y++;
 	}
 	free(p->hmap);
@@ -83,28 +75,4 @@ void	free_piece(t_parser *p)
 		y++;
 	}
 	free(p->piece);
-}
-
-void	print_board(t_parser *p)
-{
-	int		y;
-
-	y = 0;
-	while (y < p->height)
-	{
-		dprintf(2, "%03d  %s\n", y, p->board[y]);
-		y++;
-	}
-}
-
-void	print_piece(t_parser *p, char **piece)
-{
-	int		y;
-
-	y = 0;
-	while (y < p->piece_h)
-	{
-		dprintf(2, "[%s]\n", piece[y]);
-		y++;
-	}
 }
