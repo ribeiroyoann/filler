@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 13:53:48 by yoann             #+#    #+#             */
-/*   Updated: 2019/04/08 14:37:40 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/04/08 19:20:14 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,8 @@ int		get_player(t_parser *p)
 	char	*line;
 
 	get_next_line(0, &line);
-	if ((line[10] != '1' && line[10] != '0') || !line[10])
+	if ((line[10] != '1' && line[10] != '2') || !line[10])
 		return (ft_puterror("Player error"));
-	if (line[10] == '1')
-		p->player = 'O';
-	else
-		p->player = 'X';
 	p->player = (line[10] == '1') ? 'O' : 'X';
 	p->enemy = (p->player == 'O') ? 'X' : 'O';
 	ft_strdel(&line);
@@ -90,7 +86,6 @@ int		create_piece(t_parser *p)
 		ft_strdel(&line);
 		y++;
 	}
-	ft_strdel(&line);
 	trim_piece(p, ogpiece);
 	free_2darray(ogpiece, p->piece_h);
 	return (1);
