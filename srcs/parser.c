@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 13:53:48 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/28 17:02:47 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/04/08 14:37:40 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int		create_piece(t_parser *p)
 	}
 	ft_strdel(&line);
 	trim_piece(p, ogpiece);
-	free_2darray(p, ogpiece, p->piece_h);
+	free_2darray(ogpiece, p->piece_h);
 	return (1);
 }
 

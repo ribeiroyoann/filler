@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 15:56:05 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/28 18:02:09 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/04/08 14:36:17 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int		main(int argc, char **argv)
 {
 	t_parser	*p;
 
+	(void)argc;
+	(void)argv;
 	if (!(p = malloc(sizeof(t_parser))))
 		return (ft_puterror("Malloc error"));
 	init_struct(p);

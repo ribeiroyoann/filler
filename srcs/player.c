@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 19:53:09 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/28 17:53:44 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/04/08 14:37:50 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,8 @@ int		solve(t_parser *p)
 			}
 		}
 	}
-	free_2darray(p, p->board, p->height);
-	free_2darray(p, p->piece, p->psizey);
+	free_2darray(p->board, p->height);
+	free_2darray(p->piece, p->psizey);
 	free_hmap(p);
 	if (!placeable)
 		return (0);
